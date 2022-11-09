@@ -205,12 +205,12 @@ public class Main extends javax.swing.JFrame {
             String[] headerComponents = headerData[i].split(",");
             headers[i] = headerComponents;
         }
-//        for (int i = 0; i < headers.length; i++) {
-//            for (int j = 0; j < headers[i].length; j++) {
-//                System.out.print(headers[i][j] + "\t");
-//            }
-//            System.out.println();
-//        }
+        for (int i = 0; i < headers.length; i++) {
+            for (int j = 0; j < headers[i].length; j++) {
+                System.out.print(headers[i][j] + "\t");
+            }
+            System.out.println();
+        }
     }
     
     private void loadTemp() {
@@ -223,12 +223,12 @@ public class Main extends javax.swing.JFrame {
                 headers[i][0] = headerData.get(i)[0];
                 headers[i][1] = headerData.get(i)[1];
             }
-//            for (int i = 0; i < headers.length; i++) {
-//                for (int j = 0; j < headers[i].length; j++) {
-//                    System.out.print(headers[i][j] + "\t");
-//                }
-//                System.out.println();
-//            }
+            for (int i = 0; i < headers.length; i++) {
+                for (int j = 0; j < headers[i].length; j++) {
+                    System.out.print(headers[i][j] + "\t");
+                }
+                System.out.println();
+            }
 	}
 	catch (CsvException | IOException e) {
             e.printStackTrace();
