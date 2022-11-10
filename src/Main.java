@@ -420,6 +420,18 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
+        if (changed == true && censusTable.getModel().getRowCount() > 0) {
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved data table. Do you want to save it?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (result) {
+                case JOptionPane.YES_OPTION:
+                    exportCsvCActionPerformed(evt);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+                default:
+                    return;
+            }
+        }
         System.exit(0);
     }//GEN-LAST:event_btExitActionPerformed
 
@@ -450,6 +462,7 @@ public class Main extends javax.swing.JFrame {
             dataRow[9] = tfState.getText();
             DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
             model.addRow(dataRow);
+            changed = true;
             tfAadhaar.setText("");
             tfFName.setText("");
             tfLName.setText("");
@@ -480,10 +493,11 @@ public class Main extends javax.swing.JFrame {
     private void btDeleteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteCActionPerformed
         int row = censusTable.getSelectedRow();
         if (row < 0) {
-            JOptionPane.showMessageDialog(this, "No row is selected to be deleted! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No data point is selected to be deleted! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
             model.removeRow(row);
+            changed = true;
             JOptionPane.showMessageDialog(this, "Data point removed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteCActionPerformed
@@ -493,7 +507,7 @@ public class Main extends javax.swing.JFrame {
             selectedRowC = censusTable.getSelectedRow();
             if (selectedRowC < 0) {
                 tbtUpdateC.setSelected(false);
-                JOptionPane.showMessageDialog(this, "No row is selected to be updated! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No data point is selected to be updated! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 tbtUpdateC.setText("SAVE");
                 btAddC.setEnabled(false);
@@ -536,7 +550,18 @@ public class Main extends javax.swing.JFrame {
                 model.setValueAt(tfPIN.getText(), selectedRowC, 7);
                 model.setValueAt(tfDistrict.getText(), selectedRowC, 8);
                 model.setValueAt(tfState.getText(), selectedRowC, 9);
+                changed = true;
                 tbtUpdateC.setText("UPDATE");
+                tfAadhaar.setText("");
+                tfFName.setText("");
+                tfLName.setText("");
+                ftfDOB.setText("");
+                cbGender.setSelectedIndex(0);
+                tfReligion.setText("");
+                tfCity.setText("");
+                tfPIN.setText("");
+                tfDistrict.setText("");
+                tfState.setText("");
                 btAddC.setEnabled(true);
                 btDeleteC.setEnabled(true);
                 JOptionPane.showMessageDialog(this, "Data point updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -550,6 +575,7 @@ public class Main extends javax.swing.JFrame {
         if (option == JFileChooser.APPROVE_OPTION) {
             exportToCSV(censusTable, fileChooser.getSelectedFile().getAbsolutePath());
         }
+        changed = false;
     }//GEN-LAST:event_exportCsvCActionPerformed
     
     private void exportToCSV(JTable tableToExport, String pathToExportTo) {
@@ -574,7 +600,6 @@ public class Main extends javax.swing.JFrame {
     }
     
     public static void main(String args[]) {
-
         try {
             UIManager.setLookAndFeel(new FlatIntelliJLaf());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
@@ -589,6 +614,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     private int selectedRowC = -1;
+    private boolean changed = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddC;
     private javax.swing.JButton btClearC;
