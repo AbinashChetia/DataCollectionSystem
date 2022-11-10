@@ -1,14 +1,12 @@
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-import com.opencsv.exceptions.CsvException;
-import java.io.FileReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -20,70 +18,366 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rbgOpt = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        rbNewTemp = new javax.swing.JRadioButton();
-        rbTempCSV = new javax.swing.JRadioButton();
-        rbDataset = new javax.swing.JRadioButton();
-        btSelCSV = new javax.swing.JButton();
+        lbTitle = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        censusTab = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        taTemp = new javax.swing.JTextArea();
-        btCont = new javax.swing.JButton();
+        censusTable = new javax.swing.JTable();
+        jDesktopPane2 = new javax.swing.JDesktopPane();
+        btAddC = new javax.swing.JButton();
+        btDeleteC = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tfFName = new javax.swing.JTextField();
+        tfCity = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        tfPIN = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        tfReligion = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        tfLName = new javax.swing.JTextField();
+        tfState = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        cbGender = new javax.swing.JComboBox<>();
+        tfDistrict = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        ftfDOB = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        tfAadhaar = new javax.swing.JTextField();
+        btClearC = new javax.swing.JButton();
+        tbtUpdateC = new javax.swing.JToggleButton();
+        exportCsvC = new javax.swing.JButton();
+        incomeTab = new javax.swing.JPanel();
+        employmentTab = new javax.swing.JPanel();
         btExit = new javax.swing.JButton();
-        lbSel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Data Collection System");
+        setMinimumSize(new java.awt.Dimension(1129, 799));
 
-        jLabel1.setFont(new java.awt.Font("Manjari", 1, 24)); // NOI18N
-        jLabel1.setText("Data Collection System");
+        lbTitle.setFont(new java.awt.Font("Meera", 1, 36)); // NOI18N
+        lbTitle.setText("DATA COLLECTION SYSTEM");
 
-        rbgOpt.add(rbNewTemp);
-        rbNewTemp.setText("Create New Template");
-        rbNewTemp.addActionListener(new java.awt.event.ActionListener() {
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTabbedPane1.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jScrollPane1.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+
+        censusTable.setFont(new java.awt.Font("Liberation Sans Narrow", 0, 15)); // NOI18N
+        censusTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Aadhaar", "First Name", "Last Name", "Date of Birth", "Gender", "Religion", "City/Town/Village", "PIN", "District", "State"
+            }
+        ));
+        censusTable.setGridColor(new java.awt.Color(102, 102, 102));
+        censusTable.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        jScrollPane1.setViewportView(censusTable);
+
+        btAddC.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btAddC.setText("ADD");
+        btAddC.setAlignmentY(0.0F);
+        btAddC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbNewTempActionPerformed(evt);
+                btAddCActionPerformed(evt);
             }
         });
 
-        rbgOpt.add(rbTempCSV);
-        rbTempCSV.setText("Load Template From CSV");
-        rbTempCSV.addActionListener(new java.awt.event.ActionListener() {
+        btDeleteC.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btDeleteC.setText("DELETE");
+        btDeleteC.setAlignmentY(0.0F);
+        btDeleteC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbTempCSVActionPerformed(evt);
+                btDeleteCActionPerformed(evt);
             }
         });
 
-        rbgOpt.add(rbDataset);
-        rbDataset.setText("Load Dataset from CSV");
-        rbDataset.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel1.setText("First Name");
+
+        jLabel8.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel8.setText("City/Town/Village");
+
+        tfFName.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        tfCity.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel2.setText("Last Name");
+
+        tfPIN.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel9.setText("District");
+
+        jLabel7.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel7.setText("Date of Birth");
+
+        tfReligion.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel11.setText("PIN");
+
+        tfLName.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        tfState.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel13.setText("Religion");
+
+        cbGender.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        cbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Female", "Male", "Others" }));
+
+        tfDistrict.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel10.setText("State");
+
+        jLabel12.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel12.setText("Gender");
+
+        ftfDOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        ftfDOB.setToolTipText("Format: dd/MM/yyyy");
+        ftfDOB.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel3.setText("Aadhaar Number");
+
+        tfAadhaar.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfFName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfCity, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfPIN, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfReligion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfLName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfState, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(cbGender, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfDistrict, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ftfDOB, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfAadhaar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfDistrict)
+                    .addComponent(tfState)
+                    .addComponent(tfPIN)
+                    .addComponent(tfCity)
+                    .addComponent(tfLName)
+                    .addComponent(tfFName)
+                    .addComponent(cbGender, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfReligion)
+                    .addComponent(ftfDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfAadhaar, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfAadhaar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(ftfDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tfReligion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(tfCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(tfPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tfDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tfState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        btClearC.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btClearC.setText("CLEAR");
+        btClearC.setAlignmentY(0.0F);
+        btClearC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbDatasetActionPerformed(evt);
+                btClearCActionPerformed(evt);
             }
         });
 
-        btSelCSV.setText("Select CSV File");
-        btSelCSV.setEnabled(false);
-        btSelCSV.addActionListener(new java.awt.event.ActionListener() {
+        tbtUpdateC.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        tbtUpdateC.setText("UPDATE");
+        tbtUpdateC.setAlignmentY(0.0F);
+        tbtUpdateC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSelCSVActionPerformed(evt);
+                tbtUpdateCActionPerformed(evt);
             }
         });
 
-        taTemp.setEditable(false);
-        taTemp.setColumns(20);
-        taTemp.setLineWrap(true);
-        taTemp.setRows(5);
-        jScrollPane1.setViewportView(taTemp);
+        jDesktopPane2.setLayer(btAddC, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(btDeleteC, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(btClearC, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(tbtUpdateC, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        btCont.setText("Continue");
-        btCont.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
+        jDesktopPane2.setLayout(jDesktopPane2Layout);
+        jDesktopPane2Layout.setHorizontalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btAddC, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btClearC))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btDeleteC)
+                    .addComponent(tbtUpdateC))
+                .addGap(81, 81, 81))
+        );
+
+        jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btAddC, btClearC, btDeleteC, tbtUpdateC});
+
+        jDesktopPane2Layout.setVerticalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btAddC, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbtUpdateC))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btDeleteC)
+                    .addComponent(btClearC))
+                .addContainerGap())
+        );
+
+        jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btAddC, btClearC, btDeleteC, tbtUpdateC});
+
+        exportCsvC.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
+        exportCsvC.setText("Export as CSV");
+        exportCsvC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btContActionPerformed(evt);
+                exportCsvCActionPerformed(evt);
             }
         });
 
-        btExit.setText("Exit");
+        javax.swing.GroupLayout censusTabLayout = new javax.swing.GroupLayout(censusTab);
+        censusTab.setLayout(censusTabLayout);
+        censusTabLayout.setHorizontalGroup(
+            censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(censusTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(censusTabLayout.createSequentialGroup()
+                        .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, censusTabLayout.createSequentialGroup()
+                        .addGap(0, 995, Short.MAX_VALUE)
+                        .addComponent(exportCsvC)))
+                .addContainerGap())
+        );
+        censusTabLayout.setVerticalGroup(
+            censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(censusTabLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDesktopPane2)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(exportCsvC)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("CENSUS", censusTab);
+
+        javax.swing.GroupLayout incomeTabLayout = new javax.swing.GroupLayout(incomeTab);
+        incomeTab.setLayout(incomeTabLayout);
+        incomeTabLayout.setHorizontalGroup(
+            incomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1140, Short.MAX_VALUE)
+        );
+        incomeTabLayout.setVerticalGroup(
+            incomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 648, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("INCOME", incomeTab);
+
+        javax.swing.GroupLayout employmentTabLayout = new javax.swing.GroupLayout(employmentTab);
+        employmentTab.setLayout(employmentTabLayout);
+        employmentTabLayout.setHorizontalGroup(
+            employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1140, Short.MAX_VALUE)
+        );
+        employmentTabLayout.setVerticalGroup(
+            employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 648, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("EMPLOYMENT", employmentTab);
+
+        btExit.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btExit.setText("EXIT");
         btExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExitActionPerformed(evt);
@@ -95,164 +389,187 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(rbNewTemp)
-                        .addGap(60, 60, 60)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(rbTempCSV))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(273, 273, 273)
-                        .addComponent(btSelCSV)
-                        .addGap(25, 25, 25)
-                        .addComponent(lbSel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(rbDataset)
-                        .addGap(184, 184, 184)
-                        .addComponent(btCont)
-                        .addGap(52, 52, 52)
-                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48))
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(209, 209, 209))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbTitle)
+                .addGap(372, 372, 372))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(502, 502, 502)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbNewTemp)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(rbTempCSV)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btSelCSV)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbSel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbDataset)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btCont, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lbTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rbNewTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNewTempActionPerformed
-        if(btSelCSV.isEnabled()) {
-            btSelCSV.setEnabled(false);
-        }
-        taTemp.setEditable(true);
-    }//GEN-LAST:event_rbNewTempActionPerformed
-
-    private void rbTempCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTempCSVActionPerformed
-        if (taTemp.isEditable()) {
-            taTemp.setText("");
-            taTemp.setEditable(false);
-        }
-        btSelCSV.setEnabled(true);
-    }//GEN-LAST:event_rbTempCSVActionPerformed
-
-    private void rbDatasetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDatasetActionPerformed
-        if (taTemp.isEditable()) {
-            taTemp.setText("");
-            taTemp.setEditable(false);
-        }
-        btSelCSV.setEnabled(true);
-    }//GEN-LAST:event_rbDatasetActionPerformed
-
-    private void btContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContActionPerformed
-        if(rbNewTemp.isSelected()) {
-            if (taTemp.getText().isBlank() | taTemp.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Error: Text Area for the template is empty. Please enter the template in the required format.", "Error", 0);
-            } else {
-                createNewTemp(taTemp.getText());
-            }
-        } else if (rbTempCSV.isSelected() | rbDataset.isSelected()) {
-            if (csvFilePath.isBlank() | csvFilePath.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Error: No CSV File has been selected. Please select one and continue.", "Error", 0);
-            } else {
-                if (rbTempCSV.isSelected()) {
-                    loadTemp();
-                } else if (rbDataset.isSelected()) {
-                    loadDataset();
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Error: No option is selected. Please select one and continue.", "Error", 0);
-        }
-    }//GEN-LAST:event_btContActionPerformed
     
-    private void createNewTemp(String data) {
-        String[] headerData = data.split("\n");
-        headers = new String[headerData.length][2];
-        for (int i = 0; i < headerData.length; i++) {
-            String[] headerComponents = headerData[i].split(",");
-            headers[i] = headerComponents;
-        }
-        for (int i = 0; i < headers.length; i++) {
-            for (int j = 0; j < headers[i].length; j++) {
-                System.out.print(headers[i][j] + "\t");
-            }
-            System.out.println();
-        }
-    }
-    
-    private void loadTemp() {
-        try {
-            FileReader filereader = new FileReader(csvFilePath);
-            CSVReader csvReader = new CSVReaderBuilder(filereader).withSkipLines(0).build();
-            List<String[]> headerData = csvReader.readAll();
-            headers = new String[headerData.size()][2];
-            for (int i = 0; i < headerData.size(); i++) {
-                headers[i][0] = headerData.get(i)[0];
-                headers[i][1] = headerData.get(i)[1];
-            }
-            for (int i = 0; i < headers.length; i++) {
-                for (int j = 0; j < headers[i].length; j++) {
-                    System.out.print(headers[i][j] + "\t");
-                }
-                System.out.println();
-            }
-	}
-	catch (CsvException | IOException e) {
-            e.printStackTrace();
-	}
-    }
-    
-    private void loadDataset() {
-        JOptionPane.showMessageDialog(this, "Loading dataset from CSV is still in developement :)", "Message", 1);
-    }
-
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btExitActionPerformed
 
-    private void btSelCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelCSVActionPerformed
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter(null, "csv");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(fileFilter);
-        fileChooser.setDialogTitle("Choose CSV file");
-        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            csvFilePath = fileChooser.getSelectedFile().getAbsolutePath();
-            lbSel.setText(fileChooser.getSelectedFile().getName());
+    private void btAddCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddCActionPerformed
+        if (tfAadhaar.getText().isBlank() || 
+                tfFName.getText().isBlank() || 
+                tfLName.getText().isBlank() || 
+                ftfDOB.getText().isBlank() || 
+                cbGender.getSelectedIndex() == 0 ||
+                tfReligion.getText().isBlank() ||
+                tfCity.getText().isBlank() ||
+                tfPIN.getText().isBlank() ||
+                tfDistrict.getText().isBlank() ||
+                tfState.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Invalid Input. Please check if any one of the inputs are empty or of invalid format and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        } else {
+            Object[] dataRow = new Object[10];
+            dataRow[0] = tfAadhaar.getText();
+            dataRow[1] = tfFName.getText();
+            dataRow[2] = tfLName.getText();
+            dataRow[3] = ftfDOB.getText();
+            dataRow[4] = cbGender.getSelectedItem();
+            dataRow[5] = tfReligion.getText();
+            dataRow[6] = tfCity.getText();
+            dataRow[7] = tfPIN.getText();
+            dataRow[8] = tfDistrict.getText();
+            dataRow[9] = tfState.getText();
+            DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
+            model.addRow(dataRow);
+            tfAadhaar.setText("");
+            tfFName.setText("");
+            tfLName.setText("");
+            ftfDOB.setText("");
+            cbGender.setSelectedIndex(0);
+            tfReligion.setText("");
+            tfCity.setText("");
+            tfPIN.setText("");
+            tfDistrict.setText("");
+            tfState.setText("");
+            JOptionPane.showMessageDialog(this, "Data point added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_btSelCSVActionPerformed
+    }//GEN-LAST:event_btAddCActionPerformed
+
+    private void btClearCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearCActionPerformed
+        tfAadhaar.setText("");
+        tfFName.setText("");
+        tfLName.setText("");
+        ftfDOB.setText("");
+        cbGender.setSelectedIndex(0);
+        tfReligion.setText("");
+        tfCity.setText("");
+        tfPIN.setText("");
+        tfDistrict.setText("");
+        tfState.setText("");
+    }//GEN-LAST:event_btClearCActionPerformed
+
+    private void btDeleteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteCActionPerformed
+        int row = censusTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "No row is selected to be deleted! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
+            model.removeRow(row);
+            JOptionPane.showMessageDialog(this, "Data point removed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btDeleteCActionPerformed
+
+    private void tbtUpdateCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtUpdateCActionPerformed
+        if (tbtUpdateC.isSelected()) {
+            selectedRowC = censusTable.getSelectedRow();
+            if (selectedRowC < 0) {
+                tbtUpdateC.setSelected(false);
+                JOptionPane.showMessageDialog(this, "No row is selected to be updated! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                tbtUpdateC.setText("SAVE");
+                btAddC.setEnabled(false);
+                btDeleteC.setEnabled(false);
+                censusTable.setEnabled(false);
+                DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
+                tfAadhaar.setText(model.getValueAt(selectedRowC, 0).toString());
+                tfFName.setText(model.getValueAt(selectedRowC, 1).toString());
+                tfLName.setText(model.getValueAt(selectedRowC, 2).toString());
+                ftfDOB.setText(model.getValueAt(selectedRowC, 3).toString());
+                cbGender.setSelectedItem(model.getValueAt(selectedRowC, 4).toString());
+                tfReligion.setText(model.getValueAt(selectedRowC, 5).toString());
+                tfCity.setText(model.getValueAt(selectedRowC, 6).toString());
+                tfPIN.setText(model.getValueAt(selectedRowC, 7).toString());
+                tfDistrict.setText(model.getValueAt(selectedRowC, 8).toString());
+                tfState.setText(model.getValueAt(selectedRowC, 9).toString());
+            }
+        } else if (!tbtUpdateC.isSelected()) {
+            if (tfAadhaar.getText().isBlank() || 
+                tfFName.getText().isBlank() || 
+                tfLName.getText().isBlank() || 
+                ftfDOB.getText().isBlank() || 
+                cbGender.getSelectedIndex() == 0 ||
+                tfReligion.getText().isBlank() ||
+                tfCity.getText().isBlank() ||
+                tfPIN.getText().isBlank() ||
+                tfDistrict.getText().isBlank() ||
+                tfState.getText().isBlank()) {
+                JOptionPane.showMessageDialog(this, "Invalid Input! Please check if any one of the inputs are empty or is of invalid format, and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {      
+                censusTable.setEnabled(true);
+                DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
+                model.setValueAt(tfAadhaar.getText(), selectedRowC, 0);
+                model.setValueAt(tfFName.getText(), selectedRowC, 1);
+                model.setValueAt(tfLName.getText(), selectedRowC, 2);
+                model.setValueAt(ftfDOB.getText(), selectedRowC, 3);
+                model.setValueAt(cbGender.getSelectedItem(), selectedRowC, 4);
+                model.setValueAt(tfReligion.getText(), selectedRowC, 5);
+                model.setValueAt(tfCity.getText(), selectedRowC, 6);
+                model.setValueAt(tfPIN.getText(), selectedRowC, 7);
+                model.setValueAt(tfDistrict.getText(), selectedRowC, 8);
+                model.setValueAt(tfState.getText(), selectedRowC, 9);
+                tbtUpdateC.setText("UPDATE");
+                btAddC.setEnabled(true);
+                btDeleteC.setEnabled(true);
+                JOptionPane.showMessageDialog(this, "Data point updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_tbtUpdateCActionPerformed
+
+    private void exportCsvCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCsvCActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int option = fileChooser.showSaveDialog(null);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            exportToCSV(censusTable, fileChooser.getSelectedFile().getAbsolutePath());
+        }
+    }//GEN-LAST:event_exportCsvCActionPerformed
+    
+    private void exportToCSV(JTable tableToExport, String pathToExportTo) {
+        try {
+            DefaultTableModel model = (DefaultTableModel) tableToExport.getModel();
+            FileWriter csv = new FileWriter(new File(pathToExportTo));
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                csv.write(model.getColumnName(i) + ",");
+            }
+            csv.write("\n");
+            for (int i = 0; i < model.getRowCount(); i++) {
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    csv.write(model.getValueAt(i, j).toString() + ",");
+                }
+                csv.write("\n");
+            }
+            csv.close();
+            JOptionPane.showMessageDialog(this, "CSV File saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
     public static void main(String args[]) {
 
@@ -268,19 +585,43 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-    private String csvFilePath = "";
-    private String[][] headers;
+    
+    private int selectedRowC = -1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCont;
+    private javax.swing.JButton btAddC;
+    private javax.swing.JButton btClearC;
+    private javax.swing.JButton btDeleteC;
     private javax.swing.JButton btExit;
-    private javax.swing.JButton btSelCSV;
+    private javax.swing.JComboBox<String> cbGender;
+    private javax.swing.JPanel censusTab;
+    private javax.swing.JTable censusTable;
+    private javax.swing.JPanel employmentTab;
+    private javax.swing.JButton exportCsvC;
+    private javax.swing.JFormattedTextField ftfDOB;
+    private javax.swing.JPanel incomeTab;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbSel;
-    private javax.swing.JRadioButton rbDataset;
-    private javax.swing.JRadioButton rbNewTemp;
-    private javax.swing.JRadioButton rbTempCSV;
-    private javax.swing.ButtonGroup rbgOpt;
-    private javax.swing.JTextArea taTemp;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbTitle;
+    private javax.swing.JToggleButton tbtUpdateC;
+    private javax.swing.JTextField tfAadhaar;
+    private javax.swing.JTextField tfCity;
+    private javax.swing.JTextField tfDistrict;
+    private javax.swing.JTextField tfFName;
+    private javax.swing.JTextField tfLName;
+    private javax.swing.JTextField tfPIN;
+    private javax.swing.JTextField tfReligion;
+    private javax.swing.JTextField tfState;
     // End of variables declaration//GEN-END:variables
 }
