@@ -7,13 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -676,6 +676,14 @@ public class Main extends javax.swing.JFrame {
             CSVFileReader = new CSVReader(new FileReader(filePath));
             List myEntries = CSVFileReader.readAll();
             columnNames = (String[]) myEntries.get(0);
+            String[] origColumnNames = new String[censusTable.getModel().getColumnCount()];
+            for (int i = 0; i < censusTable.getModel().getColumnCount(); i++) {
+                origColumnNames[i] = censusTable.getModel().getColumnName(i);
+            }            
+            if (!Arrays.equals(origColumnNames, columnNames)) {
+                JOptionPane.showMessageDialog(this, "Can't load a dataset that has some different template as that of \"Census\".", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, myEntries.size()-1) {};
             int rowCount = tableModel.getRowCount();
             for (int i = 0; i < rowCount + 1; i++) {
