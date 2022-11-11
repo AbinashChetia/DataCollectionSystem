@@ -610,7 +610,6 @@ public class Main extends javax.swing.JFrame {
                     int result = JOptionPane.showConfirmDialog(this,"Another file with the same name exists in the desired directory. Do you want to overwrite it?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     switch (result) {
                         case JOptionPane.YES_OPTION:
-                            exportToCSV(censusTable, fileChooser.getSelectedFile().getAbsolutePath());
                             break;
                         case JOptionPane.NO_OPTION:
                             return;
@@ -618,6 +617,7 @@ public class Main extends javax.swing.JFrame {
                             return;
                     }
                 }
+                exportToCSV(censusTable, fileChooser.getSelectedFile().getAbsolutePath());
             }
             changed = false;
         } else {
