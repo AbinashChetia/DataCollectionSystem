@@ -1,12 +1,19 @@
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+import java.util.List;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -49,6 +56,7 @@ public class Main extends javax.swing.JFrame {
         tfAadhaar = new javax.swing.JTextField();
         btClearC = new javax.swing.JButton();
         tbtUpdateC = new javax.swing.JToggleButton();
+        loadCsvC = new javax.swing.JButton();
         exportCsvC = new javax.swing.JButton();
         incomeTab = new javax.swing.JPanel();
         employmentTab = new javax.swing.JPanel();
@@ -314,6 +322,14 @@ public class Main extends javax.swing.JFrame {
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btAddC, btClearC, btDeleteC, tbtUpdateC});
 
+        loadCsvC.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
+        loadCsvC.setText("Load CSV");
+        loadCsvC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadCsvCActionPerformed(evt);
+            }
+        });
+
         exportCsvC.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
         exportCsvC.setText("Export as CSV");
         exportCsvC.addActionListener(new java.awt.event.ActionListener() {
@@ -334,10 +350,15 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, censusTabLayout.createSequentialGroup()
-                        .addGap(0, 995, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(loadCsvC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(exportCsvC)))
                 .addContainerGap())
         );
+
+        censusTabLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exportCsvC, loadCsvC});
+
         censusTabLayout.setVerticalGroup(
             censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(censusTabLayout.createSequentialGroup()
@@ -346,9 +367,13 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jDesktopPane2)
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exportCsvC)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exportCsvC)
+                    .addComponent(loadCsvC))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
+
+        censusTabLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {exportCsvC, loadCsvC});
 
         jTabbedPane1.addTab("CENSUS", censusTab);
 
@@ -392,16 +417,19 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(386, 386, 386)
-                .addComponent(lbTitle)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(523, 523, 523)
-                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lbTitle)
+                                .addGap(389, 389, 389))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(512, 512, 512))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,7 +449,7 @@ public class Main extends javax.swing.JFrame {
     
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
         if (changed == true && censusTable.getModel().getRowCount() > 0) {
-            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved data table. Do you want to save it?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved data table. Do you want to save it before exiting?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             switch (result) {
                 case JOptionPane.YES_OPTION:
                     exportCsvCActionPerformed(evt);
@@ -513,6 +541,8 @@ public class Main extends javax.swing.JFrame {
                 btAddC.setEnabled(false);
                 btDeleteC.setEnabled(false);
                 censusTable.setEnabled(false);
+                loadCsvC.setEnabled(false);
+                exportCsvC.setEnabled(false);
                 DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
                 tfAadhaar.setText(model.getValueAt(selectedRowC, 0).toString());
                 tfFName.setText(model.getValueAt(selectedRowC, 1).toString());
@@ -564,40 +594,109 @@ public class Main extends javax.swing.JFrame {
                 tfState.setText("");
                 btAddC.setEnabled(true);
                 btDeleteC.setEnabled(true);
+                loadCsvC.setEnabled(true);
+                exportCsvC.setEnabled(true);
                 JOptionPane.showMessageDialog(this, "Data point updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_tbtUpdateCActionPerformed
 
     private void exportCsvCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCsvCActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showSaveDialog(null);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            exportToCSV(censusTable, fileChooser.getSelectedFile().getAbsolutePath());
+        if (changed == true && censusTable.getModel().getRowCount() > 0) {
+            JFileChooser fileChooser = new JFileChooser();
+            int option = fileChooser.showSaveDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION) {
+                if (fileChooser.getSelectedFile().exists()) {
+                    int result = JOptionPane.showConfirmDialog(this,"Another file with the same name exists in the desired directory. Do you want to overwrite it?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    switch (result) {
+                        case JOptionPane.YES_OPTION:
+                            exportToCSV(censusTable, fileChooser.getSelectedFile().getAbsolutePath());
+                            break;
+                        case JOptionPane.NO_OPTION:
+                            return;
+                        default:
+                            return;
+                    }
+                }
+            }
+            changed = false;
+        } else {
+            JOptionPane.showMessageDialog(this, "Can't export an empty dataset or a dataset that has not been updated.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        changed = false;
     }//GEN-LAST:event_exportCsvCActionPerformed
-    
+        
     private void exportToCSV(JTable tableToExport, String pathToExportTo) {
         try {
             DefaultTableModel model = (DefaultTableModel) tableToExport.getModel();
-            FileWriter csv = new FileWriter(new File(pathToExportTo));
-            for (int i = 0; i < model.getColumnCount(); i++) {
-                csv.write(model.getColumnName(i) + ",");
-            }
-            csv.write("\n");
-            for (int i = 0; i < model.getRowCount(); i++) {
-                for (int j = 0; j < model.getColumnCount(); j++) {
-                    csv.write(model.getValueAt(i, j).toString() + ",");
+            try (FileWriter csv = new FileWriter(new File(pathToExportTo))) {
+                for (int i = 0; i < model.getColumnCount() - 1; i++) {
+                    csv.write(model.getColumnName(i) + ",");
                 }
-                csv.write("\n");
+                csv.write(model.getColumnName(model.getColumnCount() - 1) + '\n');
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    for (int j = 0; j < model.getColumnCount() - 1; j++) {
+                        csv.write(model.getValueAt(i, j).toString() + ",");
+                    }
+                    csv.write(model.getValueAt(i, model.getColumnCount() - 1).toString() + '\n');
+                }
             }
-            csv.close();
             JOptionPane.showMessageDialog(this, "CSV File saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    private void loadCsvCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCsvCActionPerformed
+        if (changed == true && censusTable.getModel().getRowCount() > 0) {
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (result) {
+                case JOptionPane.YES_OPTION:
+                    exportCsvCActionPerformed(evt);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+                default:
+                    return;
+            }
+        }
+        String filePath = "";
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter(null, "csv");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(fileFilter);
+        fileChooser.setDialogTitle("Choose CSV file to load");
+        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            filePath = fileChooser.getSelectedFile().getAbsolutePath();
+        }
+        if (filePath.isBlank()) {
+            return;
+        }
+        try {
+            Object[] columnNames;
+            CSVReader CSVFileReader;
+            CSVFileReader = new CSVReader(new FileReader(filePath));
+            List myEntries = CSVFileReader.readAll();
+            columnNames = (String[]) myEntries.get(0);
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, myEntries.size()-1) {};
+            int rowCount = tableModel.getRowCount();
+            for (int i = 0; i < rowCount + 1; i++) {
+                int columnNum = 0;
+                if (i > 0) {
+                    for (String thisCellValue : (String[])myEntries.get(i)) {
+                        tableModel.setValueAt(thisCellValue, i - 1, columnNum);
+                        columnNum++;
+                    }
+                }
+            }
+            censusTable.setModel(tableModel);
+            JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (CsvException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_loadCsvCActionPerformed
     
     public static void main(String args[]) {
         try {
@@ -642,6 +741,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbTitle;
+    private javax.swing.JButton loadCsvC;
     private javax.swing.JToggleButton tbtUpdateC;
     private javax.swing.JTextField tfAadhaar;
     private javax.swing.JTextField tfCity;
