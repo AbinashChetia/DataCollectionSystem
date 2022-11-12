@@ -44,7 +44,7 @@ public class Main extends javax.swing.JFrame {
         tfLNameC = new javax.swing.JTextField();
         tfState = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        cbGender = new javax.swing.JComboBox<>();
+        cbGenderC = new javax.swing.JComboBox<>();
         tfDistrict = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -82,6 +82,27 @@ public class Main extends javax.swing.JFrame {
         loadCsvS = new javax.swing.JButton();
         exportCsvS = new javax.swing.JButton();
         employmentTab = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        employTable = new javax.swing.JTable();
+        jDesktopPane3 = new javax.swing.JDesktopPane();
+        jLabel14 = new javax.swing.JLabel();
+        tfFNameE = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        tfLNameE = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        tfEID = new javax.swing.JTextField();
+        btDeleteE = new javax.swing.JButton();
+        btClearE = new javax.swing.JButton();
+        tbtUpdateE = new javax.swing.JToggleButton();
+        btAddE = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        tfCName = new javax.swing.JTextField();
+        cbCompTyp = new javax.swing.JComboBox<>();
+        ftfJobSDate = new javax.swing.JFormattedTextField();
+        loadCsvE = new javax.swing.JButton();
+        exportCsvE = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,6 +112,7 @@ public class Main extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1154, 870));
 
         lbTitle.setFont(new java.awt.Font("Meera", 1, 36)); // NOI18N
+        lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("DATA COLLECTION SYSTEM");
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -144,8 +166,8 @@ public class Main extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
         jLabel13.setText("Religion");
 
-        cbGender.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
-        cbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Female", "Male", "Others" }));
+        cbGenderC.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        cbGenderC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Female", "Male", "Others" }));
 
         tfDistrict.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
 
@@ -213,7 +235,7 @@ public class Main extends javax.swing.JFrame {
         jDesktopPane1.setLayer(tfLNameC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(tfState, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(cbGender, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(cbGenderC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(tfDistrict, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -252,7 +274,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(tfCity)
                             .addComponent(tfLNameC)
                             .addComponent(tfFNameC)
-                            .addComponent(cbGender, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbGenderC, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfReligion)
                             .addComponent(ftfDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfAadhaar, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,7 +315,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbGenderC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -357,7 +379,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(loadCsvC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exportCsvC))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -513,7 +535,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel21)
                             .addComponent(jLabel22)
                             .addComponent(jLabel23))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfFNameS, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfPAN, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -522,7 +544,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(tfHRA, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfLTA, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfMA, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))))
+                        .addGap(24, 24, 24))))
         );
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btAddS, btClearS, btDeleteS, tbtUpdateS});
@@ -558,7 +580,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfMA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAddS, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btClearS))
@@ -594,14 +616,13 @@ public class Main extends javax.swing.JFrame {
             .addGroup(salaryTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(salaryTabLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(loadCsvS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exportCsvS))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -611,28 +632,248 @@ public class Main extends javax.swing.JFrame {
             salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(salaryTabLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDesktopPane2)
-                    .addGroup(salaryTabLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(exportCsvS)
-                            .addComponent(loadCsvS))))
+                .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exportCsvS)
+                    .addComponent(loadCsvS))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("SALARY", salaryTab);
 
+        jScrollPane3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+
+        employTable.setFont(new java.awt.Font("Liberation Sans Narrow", 0, 15)); // NOI18N
+        employTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "E.Id.", "First Name", "Last Name", "Company name", "Company type", "Job start"
+            }
+        ));
+        employTable.setGridColor(new java.awt.Color(102, 102, 102));
+        employTable.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        jScrollPane3.setViewportView(employTable);
+
+        jLabel14.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel14.setText("First Name");
+
+        tfFNameE.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel15.setText("Last Name");
+
+        tfLNameE.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel18.setText("Employee ID");
+
+        tfEID.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        btDeleteE.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btDeleteE.setText("DELETE");
+        btDeleteE.setAlignmentY(0.0F);
+        btDeleteE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteEActionPerformed(evt);
+            }
+        });
+
+        btClearE.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btClearE.setText("CLEAR");
+        btClearE.setAlignmentY(0.0F);
+        btClearE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearEActionPerformed(evt);
+            }
+        });
+
+        tbtUpdateE.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        tbtUpdateE.setText("UPDATE");
+        tbtUpdateE.setAlignmentY(0.0F);
+        tbtUpdateE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtUpdateEActionPerformed(evt);
+            }
+        });
+
+        btAddE.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btAddE.setText("ADD");
+        btAddE.setAlignmentY(0.0F);
+        btAddE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddEActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel19.setText("Company Name");
+
+        jLabel20.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel20.setText("Company Type");
+
+        jLabel28.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        jLabel28.setText("Job start date");
+
+        tfCName.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        cbCompTyp.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        cbCompTyp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Central Govt. owned", "State Govt. owned", "Pvt. Enterprise", "Non-profit Org." }));
+
+        ftfJobSDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        ftfJobSDate.setToolTipText("Format: dd/MM/yyyy");
+        ftfJobSDate.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+
+        jDesktopPane3.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(tfFNameE, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(tfLNameE, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(jLabel18, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(tfEID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(btDeleteE, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(btClearE, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(tbtUpdateE, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(btAddE, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(jLabel20, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(jLabel28, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(tfCName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(cbCompTyp, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane3.setLayer(ftfJobSDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane3Layout = new javax.swing.GroupLayout(jDesktopPane3);
+        jDesktopPane3.setLayout(jDesktopPane3Layout);
+        jDesktopPane3Layout.setHorizontalGroup(
+            jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tbtUpdateE)
+                    .addComponent(btAddE, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btClearE)
+                    .addComponent(btDeleteE))
+                .addGap(88, 88, 88))
+            .addGroup(jDesktopPane3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfFNameE, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfEID, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfLNameE, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCName, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbCompTyp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftfJobSDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
+        );
+
+        jDesktopPane3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btAddE, btClearE, btDeleteE, tbtUpdateE});
+
+        jDesktopPane3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbCompTyp, ftfJobSDate, tfCName});
+
+        jDesktopPane3Layout.setVerticalGroup(
+            jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane3Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(tfEID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tfFNameE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(tfLNameE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(tfCName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(cbCompTyp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(ftfJobSDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btAddE, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btClearE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tbtUpdateE)
+                    .addComponent(btDeleteE))
+                .addContainerGap())
+        );
+
+        jDesktopPane3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btAddE, btClearE, btDeleteE, tbtUpdateE});
+
+        jDesktopPane3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbCompTyp, ftfJobSDate, tfCName});
+
+        loadCsvE.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
+        loadCsvE.setText("Load CSV");
+        loadCsvE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadCsvEActionPerformed(evt);
+            }
+        });
+
+        exportCsvE.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
+        exportCsvE.setText("Export as CSV");
+        exportCsvE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportCsvEActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout employmentTabLayout = new javax.swing.GroupLayout(employmentTab);
         employmentTab.setLayout(employmentTabLayout);
         employmentTabLayout.setHorizontalGroup(
             employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+            .addGroup(employmentTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(employmentTabLayout.createSequentialGroup()
+                        .addGap(0, 415, Short.MAX_VALUE)
+                        .addComponent(loadCsvE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exportCsvE))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
         );
+
+        employmentTabLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exportCsvE, loadCsvE});
+
         employmentTabLayout.setVerticalGroup(
             employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 689, Short.MAX_VALUE)
+            .addGroup(employmentTabLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDesktopPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(employmentTabLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(loadCsvE)
+                            .addComponent(exportCsvE))))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("EMPLOYMENT", employmentTab);
@@ -649,20 +890,12 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbTitle)
-                        .addGap(389, 389, 389))))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(513, 513, 513))
+            .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -673,7 +906,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -703,6 +936,17 @@ public class Main extends javax.swing.JFrame {
                 default:
                     return;
             }
+        } else if (changedE == true && employTable.getModel().getRowCount() > 0) {
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved employment data table. Do you want to save it before exiting?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (result) {
+                case JOptionPane.YES_OPTION:
+                    exportCsvEActionPerformed(evt);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+                default:
+                    return;
+            }
         }
         System.exit(0);
     }//GEN-LAST:event_btExitActionPerformed
@@ -712,7 +956,7 @@ public class Main extends javax.swing.JFrame {
                 tfFNameC.getText().isBlank() || 
                 tfLNameC.getText().isBlank() || 
                 ftfDOB.getText().isBlank() || 
-                cbGender.getSelectedIndex() == 0 ||
+                cbGenderC.getSelectedIndex() == 0 ||
                 tfReligion.getText().isBlank() ||
                 tfCity.getText().isBlank() ||
                 tfPIN.getText().isBlank() ||
@@ -726,7 +970,7 @@ public class Main extends javax.swing.JFrame {
             dataRow[1] = tfFNameC.getText();
             dataRow[2] = tfLNameC.getText();
             dataRow[3] = ftfDOB.getText();
-            dataRow[4] = cbGender.getSelectedItem();
+            dataRow[4] = cbGenderC.getSelectedItem();
             dataRow[5] = tfReligion.getText();
             dataRow[6] = tfCity.getText();
             dataRow[7] = tfPIN.getText();
@@ -745,7 +989,7 @@ public class Main extends javax.swing.JFrame {
         tfFNameC.setText("");
         tfLNameC.setText("");
         ftfDOB.setText("");
-        cbGender.setSelectedIndex(0);
+        cbGenderC.setSelectedIndex(0);
         tfReligion.setText("");
         tfCity.setText("");
         tfPIN.setText("");
@@ -783,7 +1027,7 @@ public class Main extends javax.swing.JFrame {
                 tfFNameC.setText(model.getValueAt(selectedRowC, 1).toString());
                 tfLNameC.setText(model.getValueAt(selectedRowC, 2).toString());
                 ftfDOB.setText(model.getValueAt(selectedRowC, 3).toString());
-                cbGender.setSelectedItem(model.getValueAt(selectedRowC, 4).toString());
+                cbGenderC.setSelectedItem(model.getValueAt(selectedRowC, 4).toString());
                 tfReligion.setText(model.getValueAt(selectedRowC, 5).toString());
                 tfCity.setText(model.getValueAt(selectedRowC, 6).toString());
                 tfPIN.setText(model.getValueAt(selectedRowC, 7).toString());
@@ -795,7 +1039,7 @@ public class Main extends javax.swing.JFrame {
                 tfFNameC.getText().isBlank() || 
                 tfLNameC.getText().isBlank() || 
                 ftfDOB.getText().isBlank() || 
-                cbGender.getSelectedIndex() == 0 ||
+                cbGenderC.getSelectedIndex() == 0 ||
                 tfReligion.getText().isBlank() ||
                 tfCity.getText().isBlank() ||
                 tfPIN.getText().isBlank() ||
@@ -809,7 +1053,7 @@ public class Main extends javax.swing.JFrame {
                 model.setValueAt(tfFNameC.getText(), selectedRowC, 1);
                 model.setValueAt(tfLNameC.getText(), selectedRowC, 2);
                 model.setValueAt(ftfDOB.getText(), selectedRowC, 3);
-                model.setValueAt(cbGender.getSelectedItem(), selectedRowC, 4);
+                model.setValueAt(cbGenderC.getSelectedItem(), selectedRowC, 4);
                 model.setValueAt(tfReligion.getText(), selectedRowC, 5);
                 model.setValueAt(tfCity.getText(), selectedRowC, 6);
                 model.setValueAt(tfPIN.getText(), selectedRowC, 7);
@@ -828,7 +1072,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tbtUpdateCActionPerformed
 
     private void exportCsvCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCsvCActionPerformed
-        if (changedC == true && censusTable.getModel().getRowCount() > 0) {
+        if (censusTable.getModel().getRowCount() > 0) {
             JFileChooser fileChooser = new JFileChooser();
             int option = fileChooser.showSaveDialog(null);
             if (option == JFileChooser.APPROVE_OPTION) {
@@ -844,10 +1088,10 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
                 exportToCSV(censusTable, fileChooser.getSelectedFile().getAbsolutePath());
+                changedC = false;
             }
-            changedC = false;
         } else {
-            JOptionPane.showMessageDialog(this, "Can't export an empty dataset or a dataset that has not been updated.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Can't export an empty dataset.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_exportCsvCActionPerformed
     
@@ -901,6 +1145,7 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             censusTable.setModel(tableModel);
+            changedC = false;
             JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
@@ -961,6 +1206,7 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             salaryTable.setModel(tableModel);
+            changedS = false;
             JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
@@ -972,7 +1218,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_loadCsvSActionPerformed
 
     private void exportCsvSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCsvSActionPerformed
-        if (changedS == true && salaryTable.getModel().getRowCount() > 0) {
+        if (salaryTable.getModel().getRowCount() > 0) {
             JFileChooser fileChooser = new JFileChooser();
             int option = fileChooser.showSaveDialog(null);
             if (option == JFileChooser.APPROVE_OPTION) {
@@ -988,10 +1234,10 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
                 exportToCSV(salaryTable, fileChooser.getSelectedFile().getAbsolutePath());
+                changedS = false;
             }
-            changedS = false;
         } else {
-            JOptionPane.showMessageDialog(this, "Can't export an empty dataset or a dataset that has not been updated.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Can't export an empty dataset.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_exportCsvSActionPerformed
 
@@ -1096,6 +1342,187 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Data point added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btAddSActionPerformed
+
+    private void btDeleteEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteEActionPerformed
+        int row = employTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "No data point is selected to be deleted! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            DefaultTableModel model = (DefaultTableModel) employTable.getModel();
+            model.removeRow(row);
+            changedE = true;
+            JOptionPane.showMessageDialog(this, "Data point removed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btDeleteEActionPerformed
+
+    private void btClearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearEActionPerformed
+        tfEID.setText("");
+        tfFNameE.setText("");
+        tfLNameE.setText("");
+        tfCName.setText("");
+        cbCompTyp.setSelectedIndex(0);
+        ftfJobSDate.setText("");
+    }//GEN-LAST:event_btClearEActionPerformed
+
+    private void tbtUpdateEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtUpdateEActionPerformed
+        if (tbtUpdateE.isSelected()) {
+            selectedRowE = employTable.getSelectedRow();
+            if (selectedRowE < 0) {
+                tbtUpdateE.setSelected(false);
+                JOptionPane.showMessageDialog(this, "No data point is selected to be updated! Please select one and continue.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                tbtUpdateE.setText("SAVE");
+                btAddE.setEnabled(false);
+                btDeleteE.setEnabled(false);
+                employTable.setEnabled(false);
+                loadCsvE.setEnabled(false);
+                exportCsvE.setEnabled(false);
+                DefaultTableModel model = (DefaultTableModel) employTable.getModel();
+                tfEID.setText(model.getValueAt(selectedRowE, 0).toString());
+                tfFNameE.setText(model.getValueAt(selectedRowE, 1).toString());
+                tfLNameE.setText(model.getValueAt(selectedRowE, 2).toString());
+                tfCName.setText(model.getValueAt(selectedRowE, 3).toString());
+                cbCompTyp.setSelectedItem(model.getValueAt(selectedRowE, 4).toString());
+                ftfJobSDate.setText(model.getValueAt(selectedRowE, 5).toString());
+            }
+        } else if (!tbtUpdateE.isSelected()) {
+            if (tfEID.getText().isBlank() || 
+                tfFNameE.getText().isBlank() || 
+                tfLNameE.getText().isBlank() || 
+                tfCName.getText().isBlank() || 
+                cbCompTyp.getSelectedIndex() == 0 ||
+                ftfJobSDate.getText().isBlank()) {
+                JOptionPane.showMessageDialog(this, "Invalid Input! Please check if any one of the inputs are empty or is of invalid format, and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {      
+                employTable.setEnabled(true);
+                DefaultTableModel model = (DefaultTableModel) employTable.getModel();
+                model.setValueAt(tfEID.getText(), selectedRowE, 0);
+                model.setValueAt(tfFNameE.getText(), selectedRowE, 1);
+                model.setValueAt(tfLNameE.getText(), selectedRowE, 2);
+                model.setValueAt(tfCName.getText(), selectedRowE, 3);
+                model.setValueAt(cbCompTyp.getSelectedItem(), selectedRowE, 4);
+                model.setValueAt(ftfJobSDate.getText(), selectedRowE, 5);
+                changedE = true;
+                tbtUpdateE.setText("UPDATE");
+                btClearEActionPerformed(evt);
+                btAddE.setEnabled(true);
+                btDeleteE.setEnabled(true);
+                loadCsvE.setEnabled(true);
+                exportCsvE.setEnabled(true);
+                JOptionPane.showMessageDialog(this, "Data point updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_tbtUpdateEActionPerformed
+
+    private void btAddEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddEActionPerformed
+        if (tfEID.getText().isBlank() || 
+                tfFNameE.getText().isBlank() || 
+                tfLNameE.getText().isBlank() || 
+                tfCName.getText().isBlank() || 
+                cbCompTyp.getSelectedIndex() == 0 ||
+                ftfJobSDate.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Invalid Input. Please check if any one of the inputs are empty or of invalid format and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        } else {
+            Object[] dataRow = new Object[10];
+            dataRow[0] = tfEID.getText();
+            dataRow[1] = tfFNameE.getText();
+            dataRow[2] = tfLNameE.getText();
+            dataRow[3] = tfCName.getText();
+            dataRow[4] = cbCompTyp.getSelectedItem();
+            dataRow[5] = ftfJobSDate.getText();
+            DefaultTableModel model = (DefaultTableModel) employTable.getModel();
+            model.addRow(dataRow);
+            changedE = true;
+            btClearEActionPerformed(evt);
+            JOptionPane.showMessageDialog(this, "Data point added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btAddEActionPerformed
+
+    private void loadCsvEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCsvEActionPerformed
+        if (changedE == true && employTable.getModel().getRowCount() > 0) {
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved employment data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (result) {
+                case JOptionPane.YES_OPTION:
+                    exportCsvEActionPerformed(evt);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+                default:
+                    return;
+            }
+        }
+        String filePath = "";
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter(null, "csv");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(fileFilter);
+        fileChooser.setDialogTitle("Choose CSV file to load");
+        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            filePath = fileChooser.getSelectedFile().getAbsolutePath();
+        }
+        if (filePath.isBlank()) {
+            return;
+        }
+        try {
+            Object[] columnNames;
+            CSVReader CSVFileReader;
+            CSVFileReader = new CSVReader(new FileReader(filePath));
+            List myEntries = CSVFileReader.readAll();
+            columnNames = (String[]) myEntries.get(0);
+            String[] origColumnNames = new String[employTable.getModel().getColumnCount()];
+            for (int i = 0; i < employTable.getModel().getColumnCount(); i++) {
+                origColumnNames[i] = employTable.getModel().getColumnName(i);
+            }            
+            if (!Arrays.equals(origColumnNames, columnNames)) {
+                JOptionPane.showMessageDialog(this, "Can't load a dataset that has some different template as that of \"Employment\".", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, myEntries.size()-1) {};
+            int rowCount = tableModel.getRowCount();
+            for (int i = 0; i < rowCount + 1; i++) {
+                int columnNum = 0;
+                if (i > 0) {
+                    for (String thisCellValue : (String[])myEntries.get(i)) {
+                        tableModel.setValueAt(thisCellValue, i - 1, columnNum);
+                        columnNum++;
+                    }
+                }
+            }
+            employTable.setModel(tableModel);
+            changedE = false;
+            JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (CsvException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_loadCsvEActionPerformed
+
+    private void exportCsvEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCsvEActionPerformed
+        if (employTable.getModel().getRowCount() > 0) {
+            JFileChooser fileChooser = new JFileChooser();
+            int option = fileChooser.showSaveDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION) {
+                if (fileChooser.getSelectedFile().exists()) {
+                    int result = JOptionPane.showConfirmDialog(this,"Another file with the same name exists in the desired directory. Do you want to overwrite it?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    switch (result) {
+                        case JOptionPane.YES_OPTION:
+                            break;
+                        case JOptionPane.NO_OPTION:
+                            return;
+                        default:
+                            return;
+                    }
+                }
+                exportToCSV(employTable, fileChooser.getSelectedFile().getAbsolutePath());
+                changedE = false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Can't export an empty dataset.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_exportCsvEActionPerformed
             
     private void exportToCSV(JTable tableToExport, String pathToExportTo) {
         try {
@@ -1140,31 +1567,45 @@ public class Main extends javax.swing.JFrame {
     private boolean changedE = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddC;
+    private javax.swing.JButton btAddE;
     private javax.swing.JButton btAddS;
     private javax.swing.JButton btClearC;
+    private javax.swing.JButton btClearE;
     private javax.swing.JButton btClearS;
     private javax.swing.JButton btDeleteC;
+    private javax.swing.JButton btDeleteE;
     private javax.swing.JButton btDeleteS;
     private javax.swing.JButton btExit;
-    private javax.swing.JComboBox<String> cbGender;
+    private javax.swing.JComboBox<String> cbCompTyp;
+    private javax.swing.JComboBox<String> cbGenderC;
     private javax.swing.JPanel censusTab;
     private javax.swing.JTable censusTable;
+    private javax.swing.JTable employTable;
     private javax.swing.JPanel employmentTab;
     private javax.swing.JButton exportCsvC;
+    private javax.swing.JButton exportCsvE;
     private javax.swing.JButton exportCsvS;
     private javax.swing.JFormattedTextField ftfDOB;
+    private javax.swing.JFormattedTextField ftfJobSDate;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JDesktopPane jDesktopPane3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1174,22 +1615,29 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JButton loadCsvC;
+    private javax.swing.JButton loadCsvE;
     private javax.swing.JButton loadCsvS;
     private javax.swing.JPanel salaryTab;
     private javax.swing.JTable salaryTable;
     private javax.swing.JToggleButton tbtUpdateC;
+    private javax.swing.JToggleButton tbtUpdateE;
     private javax.swing.JToggleButton tbtUpdateS;
     private javax.swing.JTextField tfAadhaar;
     private javax.swing.JTextField tfBasic;
+    private javax.swing.JTextField tfCName;
     private javax.swing.JTextField tfCity;
     private javax.swing.JTextField tfDistrict;
+    private javax.swing.JTextField tfEID;
     private javax.swing.JTextField tfFNameC;
+    private javax.swing.JTextField tfFNameE;
     private javax.swing.JTextField tfFNameS;
     private javax.swing.JTextField tfHRA;
     private javax.swing.JTextField tfLNameC;
+    private javax.swing.JTextField tfLNameE;
     private javax.swing.JTextField tfLNameS;
     private javax.swing.JTextField tfLTA;
     private javax.swing.JTextField tfMA;
