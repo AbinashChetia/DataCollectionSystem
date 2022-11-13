@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -26,7 +28,8 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         lbTitle = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        btCsvImp = new javax.swing.JButton();
+        tabbedPane = new javax.swing.JTabbedPane();
         censusTab = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         censusTable = new javax.swing.JTable();
@@ -55,7 +58,6 @@ public class Main extends javax.swing.JFrame {
         btClearC = new javax.swing.JButton();
         tbtUpdateC = new javax.swing.JToggleButton();
         btAddC = new javax.swing.JButton();
-        loadCsvC = new javax.swing.JButton();
         exportCsvC = new javax.swing.JButton();
         salaryTab = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -79,7 +81,6 @@ public class Main extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         tfMA = new javax.swing.JTextField();
-        loadCsvS = new javax.swing.JButton();
         exportCsvS = new javax.swing.JButton();
         employmentTab = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -101,7 +102,6 @@ public class Main extends javax.swing.JFrame {
         tfCName = new javax.swing.JTextField();
         cbCompTyp = new javax.swing.JComboBox<>();
         ftfJobSDate = new javax.swing.JFormattedTextField();
-        loadCsvE = new javax.swing.JButton();
         exportCsvE = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
 
@@ -115,8 +115,16 @@ public class Main extends javax.swing.JFrame {
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("DATA COLLECTION SYSTEM");
 
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTabbedPane1.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
+        btCsvImp.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
+        btCsvImp.setText("Import from CSV");
+        btCsvImp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCsvImpActionPerformed(evt);
+            }
+        });
+
+        tabbedPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabbedPane.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
 
         jScrollPane1.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
 
@@ -349,14 +357,6 @@ public class Main extends javax.swing.JFrame {
 
         jDesktopPane1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btAddC, btClearC, btDeleteC, tbtUpdateC});
 
-        loadCsvC.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
-        loadCsvC.setText("Load CSV");
-        loadCsvC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadCsvCActionPerformed(evt);
-            }
-        });
-
         exportCsvC.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
         exportCsvC.setText("Export as CSV");
         exportCsvC.addActionListener(new java.awt.event.ActionListener() {
@@ -376,15 +376,10 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(censusTabLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(loadCsvC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exportCsvC))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        censusTabLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exportCsvC, loadCsvC});
-
         censusTabLayout.setVerticalGroup(
             censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(censusTabLayout.createSequentialGroup()
@@ -394,15 +389,11 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(censusTabLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(censusTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(loadCsvC)
-                            .addComponent(exportCsvC))))
+                        .addComponent(exportCsvC)))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        censusTabLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {exportCsvC, loadCsvC});
-
-        jTabbedPane1.addTab("CENSUS", censusTab);
+        tabbedPane.addTab("CENSUS", censusTab);
 
         jScrollPane2.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
 
@@ -593,14 +584,6 @@ public class Main extends javax.swing.JFrame {
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btAddS, btClearS, btDeleteS, tbtUpdateS});
 
-        loadCsvS.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
-        loadCsvS.setText("Load CSV");
-        loadCsvS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadCsvSActionPerformed(evt);
-            }
-        });
-
         exportCsvS.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
         exportCsvS.setText("Export as CSV");
         exportCsvS.addActionListener(new java.awt.event.ActionListener() {
@@ -618,16 +601,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(salaryTabLayout.createSequentialGroup()
-                        .addComponent(loadCsvS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(exportCsvS))
+                    .addComponent(exportCsvS)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-
-        salaryTabLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exportCsvS, loadCsvS});
-
         salaryTabLayout.setVerticalGroup(
             salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(salaryTabLayout.createSequentialGroup()
@@ -636,13 +613,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(salaryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exportCsvS)
-                    .addComponent(loadCsvS))
+                .addComponent(exportCsvS)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("SALARY", salaryTab);
+        tabbedPane.addTab("SALARY", salaryTab);
 
         jScrollPane3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
 
@@ -825,14 +800,6 @@ public class Main extends javax.swing.JFrame {
 
         jDesktopPane3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbCompTyp, ftfJobSDate, tfCName});
 
-        loadCsvE.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
-        loadCsvE.setText("Load CSV");
-        loadCsvE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadCsvEActionPerformed(evt);
-            }
-        });
-
         exportCsvE.setFont(new java.awt.Font("C059", 0, 15)); // NOI18N
         exportCsvE.setText("Export as CSV");
         exportCsvE.addActionListener(new java.awt.event.ActionListener() {
@@ -851,16 +818,11 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(employmentTabLayout.createSequentialGroup()
-                        .addGap(0, 415, Short.MAX_VALUE)
-                        .addComponent(loadCsvE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(exportCsvE))
-                    .addComponent(jScrollPane3))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        employmentTabLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {exportCsvE, loadCsvE});
-
         employmentTabLayout.setVerticalGroup(
             employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(employmentTabLayout.createSequentialGroup()
@@ -870,13 +832,11 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(employmentTabLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(employmentTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(loadCsvE)
-                            .addComponent(exportCsvE))))
+                        .addComponent(exportCsvE)))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("EMPLOYMENT", employmentTab);
+        tabbedPane.addTab("EMPLOYMENT", employmentTab);
 
         btExit.setFont(new java.awt.Font("C059", 0, 18)); // NOI18N
         btExit.setText("EXIT");
@@ -890,20 +850,30 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(513, 513, 513))
-            .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbTitle)
+                .addGap(229, 229, 229)
+                .addComponent(btCsvImp)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTitle)
+                    .addComponent(btCsvImp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -925,7 +895,7 @@ public class Main extends javax.swing.JFrame {
                 default:
                     return;
             }
-        } else if (changedS == true && salaryTable.getModel().getRowCount() > 0) {
+        } if (changedS == true && salaryTable.getModel().getRowCount() > 0) {
             int result = JOptionPane.showConfirmDialog(this,"You have an unsaved salary data table. Do you want to save it before exiting?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             switch (result) {
                 case JOptionPane.YES_OPTION:
@@ -936,7 +906,7 @@ public class Main extends javax.swing.JFrame {
                 default:
                     return;
             }
-        } else if (changedE == true && employTable.getModel().getRowCount() > 0) {
+        } if (changedE == true && employTable.getModel().getRowCount() > 0) {
             int result = JOptionPane.showConfirmDialog(this,"You have an unsaved employment data table. Do you want to save it before exiting?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             switch (result) {
                 case JOptionPane.YES_OPTION:
@@ -1020,7 +990,7 @@ public class Main extends javax.swing.JFrame {
                 btAddC.setEnabled(false);
                 btDeleteC.setEnabled(false);
                 censusTable.setEnabled(false);
-                loadCsvC.setEnabled(false);
+                btCsvImp.setEnabled(false);
                 exportCsvC.setEnabled(false);
                 DefaultTableModel model = (DefaultTableModel) censusTable.getModel();
                 tfAadhaar.setText(model.getValueAt(selectedRowC, 0).toString());
@@ -1064,7 +1034,7 @@ public class Main extends javax.swing.JFrame {
                 btClearCActionPerformed(evt);
                 btAddC.setEnabled(true);
                 btDeleteC.setEnabled(true);
-                loadCsvC.setEnabled(true);
+                btCsvImp.setEnabled(true);
                 exportCsvC.setEnabled(true);
                 JOptionPane.showMessageDialog(this, "Data point updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1095,128 +1065,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exportCsvCActionPerformed
     
-    private void loadCsvCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCsvCActionPerformed
-        if (changedC == true && censusTable.getModel().getRowCount() > 0) {
-            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved census data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            switch (result) {
-                case JOptionPane.YES_OPTION:
-                    exportCsvCActionPerformed(evt);
-                    break;
-                case JOptionPane.NO_OPTION:
-                    break;
-                default:
-                    return;
-            }
-        }
-        String filePath = "";
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter(null, "csv");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(fileFilter);
-        fileChooser.setDialogTitle("Choose CSV file to load");
-        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            filePath = fileChooser.getSelectedFile().getAbsolutePath();
-        }
-        if (filePath.isBlank()) {
-            return;
-        }
-        try {
-            Object[] columnNames;
-            CSVReader CSVFileReader;
-            CSVFileReader = new CSVReader(new FileReader(filePath));
-            List myEntries = CSVFileReader.readAll();
-            columnNames = (String[]) myEntries.get(0);
-            String[] origColumnNames = new String[censusTable.getModel().getColumnCount()];
-            for (int i = 0; i < censusTable.getModel().getColumnCount(); i++) {
-                origColumnNames[i] = censusTable.getModel().getColumnName(i);
-            }            
-            if (!Arrays.equals(origColumnNames, columnNames)) {
-                JOptionPane.showMessageDialog(this, "Can't load a dataset that has some different template as that of \"Census\".", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            DefaultTableModel tableModel = new DefaultTableModel(columnNames, myEntries.size()-1) {};
-            int rowCount = tableModel.getRowCount();
-            for (int i = 0; i < rowCount + 1; i++) {
-                int columnNum = 0;
-                if (i > 0) {
-                    for (String thisCellValue : (String[])myEntries.get(i)) {
-                        tableModel.setValueAt(thisCellValue, i - 1, columnNum);
-                        columnNum++;
-                    }
-                }
-            }
-            censusTable.setModel(tableModel);
-            changedC = false;
-            JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (CsvException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_loadCsvCActionPerformed
-
-    private void loadCsvSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCsvSActionPerformed
-        if (changedS == true && salaryTable.getModel().getRowCount() > 0) {
-            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved salary data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            switch (result) {
-                case JOptionPane.YES_OPTION:
-                    exportCsvSActionPerformed(evt);
-                    break;
-                case JOptionPane.NO_OPTION:
-                    break;
-                default:
-                    return;
-            }
-        }
-        String filePath = "";
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter(null, "csv");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(fileFilter);
-        fileChooser.setDialogTitle("Choose CSV file to load");
-        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            filePath = fileChooser.getSelectedFile().getAbsolutePath();
-        }
-        if (filePath.isBlank()) {
-            return;
-        }
-        try {
-            Object[] columnNames;
-            CSVReader CSVFileReader;
-            CSVFileReader = new CSVReader(new FileReader(filePath));
-            List myEntries = CSVFileReader.readAll();
-            columnNames = (String[]) myEntries.get(0);
-            String[] origColumnNames = new String[salaryTable.getModel().getColumnCount()];
-            for (int i = 0; i < salaryTable.getModel().getColumnCount(); i++) {
-                origColumnNames[i] = salaryTable.getModel().getColumnName(i);
-            }            
-            if (!Arrays.equals(origColumnNames, columnNames)) {
-                JOptionPane.showMessageDialog(this, "Can't load a dataset that has some different template as that of \"Salary\".", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            DefaultTableModel tableModel = new DefaultTableModel(columnNames, myEntries.size()-1) {};
-            int rowCount = tableModel.getRowCount();
-            for (int i = 0; i < rowCount + 1; i++) {
-                int columnNum = 0;
-                if (i > 0) {
-                    for (String thisCellValue : (String[])myEntries.get(i)) {
-                        tableModel.setValueAt(thisCellValue, i - 1, columnNum);
-                        columnNum++;
-                    }
-                }
-            }
-            salaryTable.setModel(tableModel);
-            changedS = false;
-            JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (CsvException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_loadCsvSActionPerformed
-
     private void exportCsvSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCsvSActionPerformed
         if (salaryTable.getModel().getRowCount() > 0) {
             JFileChooser fileChooser = new JFileChooser();
@@ -1274,7 +1122,7 @@ public class Main extends javax.swing.JFrame {
                 btAddS.setEnabled(false);
                 btDeleteS.setEnabled(false);
                 salaryTable.setEnabled(false);
-                loadCsvS.setEnabled(false);
+                btCsvImp.setEnabled(false);
                 exportCsvS.setEnabled(false);
                 DefaultTableModel model = (DefaultTableModel) salaryTable.getModel();
                 tfPAN.setText(model.getValueAt(selectedRowS, 0).toString());
@@ -1309,7 +1157,7 @@ public class Main extends javax.swing.JFrame {
                 btClearSActionPerformed(evt);
                 btAddS.setEnabled(true);
                 btDeleteS.setEnabled(true);
-                loadCsvS.setEnabled(true);
+                btCsvImp.setEnabled(true);
                 exportCsvS.setEnabled(true);
                 JOptionPane.showMessageDialog(this, "Data point updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1375,7 +1223,7 @@ public class Main extends javax.swing.JFrame {
                 btAddE.setEnabled(false);
                 btDeleteE.setEnabled(false);
                 employTable.setEnabled(false);
-                loadCsvE.setEnabled(false);
+                btCsvImp.setEnabled(false);
                 exportCsvE.setEnabled(false);
                 DefaultTableModel model = (DefaultTableModel) employTable.getModel();
                 tfEID.setText(model.getValueAt(selectedRowE, 0).toString());
@@ -1407,7 +1255,7 @@ public class Main extends javax.swing.JFrame {
                 btClearEActionPerformed(evt);
                 btAddE.setEnabled(true);
                 btDeleteE.setEnabled(true);
-                loadCsvE.setEnabled(true);
+                btCsvImp.setEnabled(true);
                 exportCsvE.setEnabled(true);
                 JOptionPane.showMessageDialog(this, "Data point updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1439,67 +1287,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btAddEActionPerformed
 
-    private void loadCsvEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCsvEActionPerformed
-        if (changedE == true && employTable.getModel().getRowCount() > 0) {
-            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved employment data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            switch (result) {
-                case JOptionPane.YES_OPTION:
-                    exportCsvEActionPerformed(evt);
-                    break;
-                case JOptionPane.NO_OPTION:
-                    break;
-                default:
-                    return;
-            }
-        }
-        String filePath = "";
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter(null, "csv");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(fileFilter);
-        fileChooser.setDialogTitle("Choose CSV file to load");
-        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            filePath = fileChooser.getSelectedFile().getAbsolutePath();
-        }
-        if (filePath.isBlank()) {
-            return;
-        }
-        try {
-            Object[] columnNames;
-            CSVReader CSVFileReader;
-            CSVFileReader = new CSVReader(new FileReader(filePath));
-            List myEntries = CSVFileReader.readAll();
-            columnNames = (String[]) myEntries.get(0);
-            String[] origColumnNames = new String[employTable.getModel().getColumnCount()];
-            for (int i = 0; i < employTable.getModel().getColumnCount(); i++) {
-                origColumnNames[i] = employTable.getModel().getColumnName(i);
-            }            
-            if (!Arrays.equals(origColumnNames, columnNames)) {
-                JOptionPane.showMessageDialog(this, "Can't load a dataset that has some different template as that of \"Employment\".", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            DefaultTableModel tableModel = new DefaultTableModel(columnNames, myEntries.size()-1) {};
-            int rowCount = tableModel.getRowCount();
-            for (int i = 0; i < rowCount + 1; i++) {
-                int columnNum = 0;
-                if (i > 0) {
-                    for (String thisCellValue : (String[])myEntries.get(i)) {
-                        tableModel.setValueAt(thisCellValue, i - 1, columnNum);
-                        columnNum++;
-                    }
-                }
-            }
-            employTable.setModel(tableModel);
-            changedE = false;
-            JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (CsvException ex) {
-            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_loadCsvEActionPerformed
-
     private void exportCsvEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCsvEActionPerformed
         if (employTable.getModel().getRowCount() > 0) {
             JFileChooser fileChooser = new JFileChooser();
@@ -1523,6 +1310,176 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Can't export an empty dataset.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_exportCsvEActionPerformed
+
+    private void btCsvImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCsvImpActionPerformed
+        if (changedC == true && censusTable.getModel().getRowCount() > 0) {
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved census data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (result) {
+                case JOptionPane.YES_OPTION:
+                    exportCsvCActionPerformed(evt);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+                default:
+                    return;
+            }
+        } if (changedS == true && salaryTable.getModel().getRowCount() > 0) {
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved salary data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (result) {
+                case JOptionPane.YES_OPTION:
+                    exportCsvSActionPerformed(evt);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+                default:
+                    return;
+            }
+        } if (changedE == true && employTable.getModel().getRowCount() > 0) {
+            int result = JOptionPane.showConfirmDialog(this,"You have an unsaved employment data table. Do you want to save it before loading another CSV dataset?", "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (result) {
+                case JOptionPane.YES_OPTION:
+                    exportCsvEActionPerformed(evt);
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+                default:
+                    return;
+            }
+        }
+        String filePath = "";
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter(null, "csv");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(fileFilter);
+        fileChooser.setDialogTitle("Choose CSV file to load");
+        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            filePath = fileChooser.getSelectedFile().getAbsolutePath();
+        }
+        if (filePath.isBlank()) {
+            return;
+        }
+        try {
+            Object[] csvCols;
+            CSVReader CSVFileReader;
+            CSVFileReader = new CSVReader(new FileReader(filePath));
+            List myEntries = CSVFileReader.readAll();
+            csvCols = (String[]) myEntries.get(0);
+            Thread checkC = new Thread(new Runnable() {
+                private Object[] csvColumns;
+                public Runnable init(Object[] csvColumns) {
+                    this.csvColumns = csvColumns;
+                    return this;
+                }
+                @Override
+                public void run() {
+                    String[] origCols = new String[censusTable.getModel().getColumnCount()];
+                    for (int i = 0; i < origCols.length; i++) {
+                        origCols[i] = censusTable.getModel().getColumnName(i);
+                    }
+                    if (Arrays.equals(origCols, csvColumns)) {
+                        DefaultTableModel tableModel = new DefaultTableModel(csvColumns, myEntries.size()-1) {};
+                        int rowCount = tableModel.getRowCount();
+                        for (int i = 0; i < rowCount + 1; i++) {
+                            int columnNum = 0;
+                            if (i > 0) {
+                                for (String thisCellValue : (String[])myEntries.get(i)) {
+                                    tableModel.setValueAt(thisCellValue, i - 1, columnNum);
+                                    columnNum++;
+                                }
+                            }
+                        }
+                        censusTable.setModel(tableModel);
+                        importSuccess = true;
+                        tabbedPane.setSelectedIndex(0);
+                        changedC = false;
+                    }
+                }
+            }.init(csvCols));
+            Thread checkS = new Thread(new Runnable() {
+                private Object[] csvColumns;
+                public Runnable init(Object[] csvColumns) {
+                    this.csvColumns = csvColumns;
+                    return this;
+                }
+                @Override
+                public void run() {
+                    String[] origCols = new String[salaryTable.getModel().getColumnCount()];
+                    for (int i = 0; i < origCols.length; i++) {
+                        origCols[i] = salaryTable.getModel().getColumnName(i);
+                    }
+                    if (Arrays.equals(origCols, csvColumns)) {
+                        DefaultTableModel tableModel = new DefaultTableModel(csvColumns, myEntries.size()-1) {};
+                        int rowCount = tableModel.getRowCount();
+                        for (int i = 0; i < rowCount + 1; i++) {
+                            int columnNum = 0;
+                            if (i > 0) {
+                                for (String thisCellValue : (String[])myEntries.get(i)) {
+                                    tableModel.setValueAt(thisCellValue, i - 1, columnNum);
+                                    columnNum++;
+                                }
+                            }
+                        }
+                        salaryTable.setModel(tableModel);
+                        importSuccess = true;                      
+                        tabbedPane.setSelectedIndex(1);
+                        changedS = false;
+                    }
+                }
+            }.init(csvCols));
+            Thread checkE = new Thread(new Runnable() {
+                private Object[] csvColumns;
+                public Runnable init(Object[] csvColumns) {
+                    this.csvColumns = csvColumns;
+                    return this;
+                }
+                @Override
+                public void run() {
+                    String[] origCols = new String[employTable.getModel().getColumnCount()];
+                    for (int i = 0; i < origCols.length; i++) {
+                        origCols[i] = employTable.getModel().getColumnName(i);
+                    }
+                    if (Arrays.equals(origCols, csvColumns)) {
+                        DefaultTableModel tableModel = new DefaultTableModel(csvColumns, myEntries.size()-1) {};
+                        int rowCount = tableModel.getRowCount();
+                        for (int i = 0; i < rowCount + 1; i++) {
+                            int columnNum = 0;
+                            if (i > 0) {
+                                for (String thisCellValue : (String[])myEntries.get(i)) {
+                                    tableModel.setValueAt(thisCellValue, i - 1, columnNum);
+                                    columnNum++;
+                                }
+                            }
+                        }
+                        employTable.setModel(tableModel);
+                        importSuccess = true;
+                        tabbedPane.setSelectedIndex(2);
+                        changedE = false;
+                    }
+                }
+            }.init(csvCols));            
+            checkC.start();
+            checkS.start();
+            checkE.start();
+            try {
+                checkC.join();         
+                checkS.join();
+                checkE.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (importSuccess == true) {                
+                JOptionPane.showMessageDialog(this, "CSV imported successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "The CSV file doesn't have a supported template format.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            importSuccess = false;
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (CsvException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btCsvImpActionPerformed
             
     private void exportToCSV(JTable tableToExport, String pathToExportTo) {
         try {
@@ -1565,6 +1522,7 @@ public class Main extends javax.swing.JFrame {
     private boolean changedC = false;
     private boolean changedS = false;
     private boolean changedE = false;
+    private boolean importSuccess = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddC;
     private javax.swing.JButton btAddE;
@@ -1572,6 +1530,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btClearC;
     private javax.swing.JButton btClearE;
     private javax.swing.JButton btClearS;
+    private javax.swing.JButton btCsvImp;
     private javax.swing.JButton btDeleteC;
     private javax.swing.JButton btDeleteE;
     private javax.swing.JButton btDeleteS;
@@ -1616,13 +1575,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbTitle;
-    private javax.swing.JButton loadCsvC;
-    private javax.swing.JButton loadCsvE;
-    private javax.swing.JButton loadCsvS;
     private javax.swing.JPanel salaryTab;
     private javax.swing.JTable salaryTable;
+    private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JToggleButton tbtUpdateC;
     private javax.swing.JToggleButton tbtUpdateE;
     private javax.swing.JToggleButton tbtUpdateS;
